@@ -1,11 +1,11 @@
 [project]
-name = "pythonproject1"
+name = "FletCalendar"
 version = "0.1.0"
 description = ""
 readme = "README.md"
-requires-python = ">=3.10"
+requires-python = ">=3.14"
 authors = [
-    { name = "Flet developer", email = "you@example.com" }
+    { name = "evapilipenko909-cmd", email = "" }
 ]
 dependencies = [
     "flet>=0.84.0"
@@ -19,9 +19,9 @@ dev = [
 ]
 
 [tool.flet]
-org = "com.mycompany"
-product = "pythonproject1"
-company = "Flet"
+org = "itmp.fit.mti"
+product = "FletCalendar"
+company = "MTI"
 copyright = "Copyright (C) 2023-2026 by Flet"
 
 [tool.flet.app]

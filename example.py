@@ -14,19 +14,19 @@ print(calendar_output)
 #27 28 29 30 31
 
 today = datetime.date.today()
-days_matrix = calendar.monthcalendar(today.year, today.month)
-print(days_matrix)
+days_matrix = calendar.monthcalendar(today.year, 7)
+print("matrix of month days", days_matrix)
 
-def day_matrix_to_day_list(matrix:list[list[int]], mode='simple') -> list[int]:
+def day_matrix_to_day_list(matrix:list[list[int]], mode='list generator') -> list[int|str]:
     """This function convert matrix with 2 methods"""
     days = []
-    if mode:
+    if not mode:
         for item in matrix:
             for day in item:
                 days.append(day)
         return days
     else:
-        return [day for week in matrix for day in week]
+        return [str(day) for week in matrix for day in week]
     
 print("simple way:",day_matrix_to_day_list(days_matrix))
 print("list generator:",day_matrix_to_day_list(days_matrix, ""))
@@ -35,3 +35,6 @@ print("list generator:",day_matrix_to_day_list(days_matrix, ""))
 ########################
 
 print("week headers:", calendar.weekheader(2).split())
+print("months_en:", list(calendar.month_name)[1:])
+
+

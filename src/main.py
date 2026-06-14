@@ -6,8 +6,7 @@ import flet as ft
 def main(page: ft.Page):
     grid:ft.GridView = ft.GridView(
         expand=True,
-        runs_count=7, # 
-        scroll=ft.ScrollMode.ALWAYS,
+        runs_count=7,#        
         child_aspect_ratio=1.0,
         spacing=5
 
@@ -22,9 +21,7 @@ def main(page: ft.Page):
             ft.Column(
                 controls=[weekdays_row, grid],
                 spacing=10,
-                alignment = ft.MainAxisAlignment.CENTER,
-
-                scroll=ft.ScrollMode.AUTO
+                alignment = ft.MainAxisAlignment.CENTER,               
 
             ),
             width=300,
