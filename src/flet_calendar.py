@@ -48,7 +48,7 @@ class FletCalendar:
         self.build()
         self.page.update()
 
-    def on_day_click(self, e: ft.ControlEvent):
+    def on_day_click(self, e: ft.Event): # e as Event in new Flet 
         # обрабатывает клик по дню в календаре
         month, day, year = e.control.data
         self.selected_date_str = f"{year}-{month:02d}-{day:02d}"
@@ -70,21 +70,25 @@ class FletCalendar:
             on_click=lambda _, m=mood_type: self.on_mood_click(m)
         )
 
-    def show_mood_selection(self):
+    def show_mood_selection(self): 
+        
         # отобр панель выбора настроения для даты
-        current_mood = self.moods.get(self.selected_date_str)
+        current_mood = self.moods.get(self.selected_date_str) # < - fix it1!
 
         # ген. кнопок
-        mood_buttons = [
+        mood_buttons: list[ft.Control] = [
             self.make_button(emoji, mood_type, color, current_mood == mood_type)
             for emoji, mood_type, color in self.MOODS_CONFIG
-        ]
+        ] # refactor listgenerator!
 
         # прямое об. сод. панели
-        self.mood_panel.content = ft.Column([
-            ft.Text(f"📅 {self.selected_date_display}", size=18, color=self.text_color),
-            ft.Row(mood_buttons, spacing=20, alignment=ft.MainAxisAlignment.CENTER),
-        ], horizontal_alignment=ft.CrossAxisAlignment.CENTER)
+        self.mood_panel.content = ft.Column(
+            controls=[
+                ft.Text(f"📅 {self.selected_date_display}", size=18, color=self.text_color),
+                ft.Row(controls=mood_buttons, spacing=20, alignment=ft.MainAxisAlignment.CENTER),
+            ],
+            horizontal_alignment=ft.CrossAxisAlignment.CENTER
+        )
 
         self.mood_panel.visible = True
         self.page.update()
@@ -125,7 +129,7 @@ class FletCalendar:
                     is_today = (day == self.current_day)
 
                     display_map = {"like": "👍", "neutral": "😐", "dislike": "👎"}
-                    display = display_map.get(mood, f"{day:02d}")
+                    display = display_map.get(mood, f"{day:02d}") # Fit
 
                     btn = ft.Container(
                         content=ft.Text(display, size=16 if mood else 14, color=self.text_color),

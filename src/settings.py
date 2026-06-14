@@ -1,3 +1,5 @@
+from enum import Enum
+
 class Config:
     APP_NAME = "Эмоции Трекер"
     REPORT_FILE = "emotion_report.txt"
@@ -15,3 +17,17 @@ class Config:
     @staticmethod
     def get_emotions() -> list:
         return Config.EMOTION_LIST.copy()
+    
+
+class Emotioms(Enum):
+    '''Класс перечеслиение для эпоций, 
+    PARAMS from Config - > EMOTION_LIST = ["Радость", "Грусть", "Спокойствие"]
+    '''
+    JOY = "Радость"
+    SADNESS = "Грусть"
+    CALM = "Спокойствие"
+
+        
+
+
+
