@@ -26,10 +26,10 @@ def day_matrix_to_day_list(matrix:list[list[int]], mode='list generator') -> lis
                 days.append(day)
         return days
     else:
-        return [str(day) for week in matrix for day in week]
+        return [day for week in matrix for day in week]
     
 print("simple way:",day_matrix_to_day_list(days_matrix))
-print("list generator:",day_matrix_to_day_list(days_matrix, ""))
+print("list generator:",day_matrix_to_day_list(days_matrix, "generator"))
 
 
 ########################
